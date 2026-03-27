@@ -1,21 +1,19 @@
 var compilerId = new Date().getTime();
 
-Object.getAllKeys=function (obj) {
-    let keys = [];
-  
-    if (!(obj instanceof Object)) {
-        obj = Object.getPrototypeOf(obj);
-    }
-    while (obj) {
-        keys = keys.concat(Reflect.ownKeys(obj));
-        obj = Object.getPrototypeOf(obj);
-    }
-    return keys;
+Object.getAllKeys = function(obj) {
+  let keys = [];
+
+  if (!(obj instanceof Object)) {
+    obj = Object.getPrototypeOf(obj);
+  }
+  while (obj) {
+    keys = keys.concat(Reflect.ownKeys(obj));
+    obj = Object.getPrototypeOf(obj);
+  }
+  return keys;
 }
 
-
 var objs = [];
-
 
 function getFullObjectList(obj) {
   const keys = Object.getAllKeys(obj);
@@ -24,9 +22,7 @@ function getFullObjectList(obj) {
     try {
       const value = obj[keys[i]];
 
-
       if (value && typeof value == 'object') {
-
 
         if (objs.indexOf(value) < 0) {
           objs.push(value);
@@ -34,7 +30,9 @@ function getFullObjectList(obj) {
         }
 
       }
-    } catch (e) { continue; }
+    } catch (e) {
+      continue;
+    }
   }
   return objs;
 }
@@ -62,7 +60,9 @@ function reduceCase(bigObj) {
         }
       }
 
-    } catch (e) { continue; }
+    } catch (e) {
+      continue;
+    }
   }
 
 }
@@ -73,7 +73,6 @@ reduceCase(HTMLElement.prototype);
 reduceCase(HTMLParagraphElement.prototype);
 ApexAttributes(allObjects);
 
-
 function ApexAttributes(abj) {
   const abj_length = abj.length;
 
@@ -82,7 +81,9 @@ function ApexAttributes(abj) {
       if (abj[i] != window.location) {
         reduceCase(abj[i]);
       }
-    } catch (e) { continue; }
+    } catch (e) {
+      continue;
+    }
   }
 }
 
@@ -96,7 +97,9 @@ for (let i = 0; i < ApexScripts_length; i++) {
     cScript.innerHTML = compiledScript;
     document.body.appendChild(cScript);
     ApexScripts[i].type = ApexScripts[i].type + '-x';
-  } catch (e) { continue; }
+  } catch (e) {
+    continue;
+  }
 }
 
 function compileApex(scr) {
@@ -112,7 +115,9 @@ function compileApex(scr) {
     for (let i = 0; i < slashMatches_length; i += 2) {
       try {
         quotes.push(slashMatches[i]);
-      } catch (e) { continue; }
+      } catch (e) {
+        continue;
+      }
     }
   }
 
@@ -122,7 +127,9 @@ function compileApex(scr) {
     for (let i = 0; i < sqMatches_length; i += 2) {
       try {
         quotes.push(sqMatches[i]);
-      } catch (e) { continue; }
+      } catch (e) {
+        continue;
+      }
     }
   }
 
@@ -132,7 +139,9 @@ function compileApex(scr) {
     for (let i = 0; i < dqMatches_length; i += 2) {
       try {
         quotes.push(dqMatches[i]);
-      } catch (e) { continue; }
+      } catch (e) {
+        continue;
+      }
     }
   }
 
@@ -142,7 +151,9 @@ function compileApex(scr) {
     for (let i = 0; i < btMatches_length; i += 2) {
       try {
         quotes.push(btMatches[i]);
-      } catch (e) { continue; }
+      } catch (e) {
+        continue;
+      }
     }
   }
 
